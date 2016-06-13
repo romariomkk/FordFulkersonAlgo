@@ -51,22 +51,17 @@ public class FordAlgo {
     }
 
     private void passThroughFlows(){
-        for (ArrayList<Vertex> tempList : flowList){
-            
-            ArrayList<Edge> edges = getFlowEdges(tempList);
-            
+        flowList.stream().map((tempList) -> getFlowEdges(tempList)).forEach((edges) -> {
             Edge minEdge = getMinFlow(edges);
-            
-            if ((minEdge.getCapacity() - minEdge.getFlow()) == 0){
-                continue;
+            int remainingFlow = minEdge.getCapacity() - minEdge.getFlow();
+            if (!(remainingFlow == 0)) {
+                edges.forEach((edge)->{
+                    edge.setFlow(edge.getFlow() + remainingFlow);
+                });
+                
+                edgesInFlowList.add(edges);
             }
-            
-            edges.forEach((edge)->{
-                edge.setFlow(edge.getFlow() + (minEdge.getCapacity() - minEdge.getFlow()));
-            });
-            
-            edgesInFlowList.add(edges);
-        }
+        });
     }
     
     private ArrayList<Edge> getFlowEdges(ArrayList<Vertex> tempList){
@@ -80,18 +75,23 @@ public class FordAlgo {
     
     private Edge getMinFlow(ArrayList<Edge> edges){
         return edges.stream().min((o1, o2)->{
-            return (o2.getCapacity() - o2.getFlow()) - (o1.getCapacity() - o1.getFlow());
+            return (o1.getCapacity() - o1.getFlow()) - (o2.getCapacity() - o2.getFlow());
         }).get();
     }
+    
     public ArrayList<ArrayList<Vertex>> getFlowList() {
         return flowList;
+    }
+    
+    public ArrayList<ArrayList<Edge>> getEdgesInFlowList() {
+        return edgesInFlowList;
     }
     
     public static void main(String[] args) {
         FordAlgo ford = new FordAlgo();
         ford.findMaxFlow(2, 10);
         ford.getFlowList().forEach((arr)->System.out.println(arr));
-        ford.edgesInFlowList.forEach((arr)->System.out.println(arr));
+        ford.getEdgesInFlowList().forEach((arr)->System.out.println(arr));
     }
     
 }
