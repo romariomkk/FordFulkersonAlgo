@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<graph_matrix>
+<meta>
+<vert count="11" />
+<edg count ="19" />
+</meta>
+<data>
+    <vertices>
+        <vertex id="1" edgesFrom="2" edgesInto="1" />
+        <vertex id="2" edgesFrom="3" edgesInto="0" />
+        <vertex id="3" edgesFrom="5" edgesInto="2" />
+        <vertex id="4" edgesFrom="2" edgesInto="2" />
+        <vertex id="5" edgesFrom="2" edgesInto="2" />
+        <vertex id="6" edgesFrom="0" edgesInto="3" />
+        <vertex id="7" edgesFrom="1" edgesInto="2" />
+        <vertex id="8" edgesFrom="2" edgesInto="2" />
+        <vertex id="9" edgesFrom="1" edgesInto="1" />
+        <vertex id="10" edgesFrom="0" edgesInto="3" />
+        <vertex id="11" edgesFrom="1" edgesInto="1" />
+    </vertices>
+    <edges>
+        <edge id="1" from="2" to="1" flow="5"/>
+        <edge id="2" from="2" to="6" flow="5"/>
+        <edge id="3" from="1" to="3" flow="3"/>
+        <edge id="4" from="1" to="4" flow="7"/>
+        <edge id="5" from="2" to="3" flow="3"/>
+        <edge id="6" from="3" to="4" flow="20"/>
+        <edge id="7" from="3" to="6" flow="4"/>
+        <edge id="8" from="8" to="6" flow="5"/>
+        <edge id="9" from="3" to="8" flow="2"/>
+        <edge id="10" from="4" to="5" flow="2"/>
+        <edge id="11" from="3" to="5" flow="3"/>
+        <edge id="12" from="3" to="7" flow="20"/>
+        <edge id="13" from="5" to="7" flow="3"/>
+        <edge id="14" from="7" to="8" flow="20"/>
+        <edge id="15" from="8" to="11" flow="5"/>
+        <edge id="16" from="4" to="9" flow="8"/>
+        <edge id="17" from="9" to="10" flow="8"/>
+        <edge id="18" from="5" to="10" flow="5"/>
+        <edge id="19" from="11" to="10" flow="6"/>
+    </edges>
+</data>
+</graph_matrix>
